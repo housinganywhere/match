@@ -1,7 +1,7 @@
 # poor man's pattern matching :traffic_light:
 
 [![npm version](https://badge.fury.io/js/%40housinganywhere%2Fmatch.svg)](https://badge.fury.io/js/%40housinganywhere%2Fmatch)
-[![CircleCI](https://circleci.com/gh/housinganywhere/safe-redux.svg?style=svg)](https://circleci.com/gh/housinganywhere/safe-redux)
+[![CircleCI](https://circleci.com/gh/housinganywhere/match.svg?style=svg)](https://circleci.com/gh/housinganywhere/match)
 
 ## Install
 
