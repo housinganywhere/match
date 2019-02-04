@@ -23,5 +23,5 @@
     "noErrorTruncation": true,
     "esModuleInterop": true
   },
-  "exclude": ["node_modules", "dist", "index.d.ts", "src/index.test.ts"]
+  "exclude": ["node_modules", "dist", "index.d.ts", "src/index.spec.ts"]
 }
