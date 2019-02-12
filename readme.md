@@ -36,7 +36,7 @@ const StatusMsg: React.SFC<{ status: Status }> = ({ status }) =>
 ```
 
 For matching several cases together use **wildMatch**. All the missing cases
-will be handled by `_`.
+will be handled by case `_`.
 
 ```ts
 import * as React from 'react';
