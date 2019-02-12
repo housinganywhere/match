@@ -44,16 +44,16 @@ import { wildMatch } from '@housinganywhere/match';
 
 type Vowels = 'a' | 'e' | 'i' | 'o' | 'u';
 
-const isA = match<Vowels, string>({
-  a: () 'Yay!',
-  _: (v) => `Nope, "${v}" is not "a"`
+const isA = wildMatch<Vowels, string>({
+  a: () => 'Yay!',
+  _: (v) => `Nope, "${v}" is not "a"`,
 });
 
-isA('a') // 'Yay!'
-isA('e') // 'Nope, "e" is not "a"'
-isA('i') // 'Nope, "i" is not "a"'
-isA('o') // 'Nope, "o" is not "a"'
-isA('u') // 'Nope, "u" is not "a"'
+isA('a'); // 'Yay!'
+isA('e'); // 'Nope, "e" is not "a"'
+isA('i'); // 'Nope, "i" is not "a"'
+isA('o'); // 'Nope, "o" is not "a"'
+isA('u'); // 'Nope, "u" is not "a"'
 ```
 
 ## License
