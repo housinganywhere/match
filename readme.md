@@ -35,7 +35,28 @@ const StatusMsg: React.SFC<{ status: Status }> = ({ status }) =>
   })(status);
 ```
 
+For matching several cases together use **wildMatch**. All the missing cases
+will be handled by case `_`.
+
+```ts
+import * as React from 'react';
+import { wildMatch } from '@housinganywhere/match';
+
+type Vowels = 'a' | 'e' | 'i' | 'o' | 'u';
+
+const isA = wildMatch<Vowels, string>({
+  a: () => 'Yay!',
+  _: (v) => `Nope, "${v}" is not "a"`,
+});
+
+isA('a'); // 'Yay!'
+isA('e'); // 'Nope, "e" is not "a"'
+isA('i'); // 'Nope, "i" is not "a"'
+isA('o'); // 'Nope, "o" is not "a"'
+isA('u'); // 'Nope, "u" is not "a"'
+```
+
 ## License
 
 [MIT](https://github.com/housinganywhere/match/blob/master/LICENSE) © 2019
-HousingAnywhere
+[HousingAnywhere](https://housinganywhere.com/)
