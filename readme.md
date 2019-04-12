@@ -39,7 +39,6 @@ For matching several cases together use **wildMatch**. All the missing cases
 will be handled by case `_`.
 
 ```ts
-import * as React from 'react';
 import { wildMatch } from '@housinganywhere/match';
 
 type Vowels = 'a' | 'e' | 'i' | 'o' | 'u';
