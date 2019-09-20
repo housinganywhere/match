@@ -20,3 +20,25 @@ export const wildMatch = <T extends string, R = void>(
 
   return m._(t);
 };
+
+interface TaggedUnion<Union extends string> {
+  readonly tag: Union;
+}
+
+type TaggedUnionMatcher<T extends TaggedUnion<string>, R> = {
+  // how to refine `t` to the real type of the TaggedUnion
+  [K in T['tag']]: <U extends TaggedUnion<K>>(t: U) => R;
+};
+
+export const taggedMatch = <
+  Union extends string,
+  T extends TaggedUnion<Union>,
+  R = void
+>(
+  m: TaggedUnionMatcher<T, R>,
+) => (t: T) => {
+  const refined = t;
+  const f = m[refined.tag];
+
+  return f(refined);
+};
