@@ -14,6 +14,18 @@ describe('@housinganywhere/match', () => {
       expect(m('bar')).toBe('BAR');
     });
 
+    it('works with number unions', () => {
+      type Status = 200 | 500;
+
+      const m = match<Status, string>({
+        200: () => 'SUCCESS',
+        500: () => 'FAILURE',
+      });
+
+      expect(m(200)).toBe('SUCCESS');
+      expect(m(500)).toBe('FAILURE');
+    });
+
     it('works with string enums', () => {
       enum Status {
         foo = 'foo',
@@ -23,6 +35,21 @@ describe('@housinganywhere/match', () => {
       const m = match<Status, string>({
         foo: () => 'FOO',
         bar: () => 'BAR',
+      });
+
+      expect(m(Status.foo)).toBe('FOO');
+      expect(m(Status.bar)).toBe('BAR');
+    });
+
+    it('works with number enums', () => {
+      enum Status {
+        foo = 10,
+        bar = 20,
+      }
+
+      const m = match<Status, string>({
+        10: () => 'FOO',
+        20: () => 'BAR',
       });
 
       expect(m(Status.foo)).toBe('FOO');

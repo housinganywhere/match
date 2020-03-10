@@ -1,18 +1,20 @@
-type Matcher<T extends string, R> = { [K in T]: (k: K) => R };
+type ExpectedType = number | string;
 
-const match = <T extends string, R = void>(m: Matcher<T, R>) => (t: T) =>
+type Matcher<T extends ExpectedType, R> = { [K in T]: (k: K) => R };
+
+const match = <T extends ExpectedType, R = void>(m: Matcher<T, R>) => (t: T) =>
   m[t](t);
 
 export default match;
 
-type PartialMatcher<T extends string, R> = { [K in T]?: (k: K) => R } & {
+type PartialMatcher<T extends ExpectedType, R> = { [K in T]?: (k: K) => R } & {
   _: (t: T) => R;
 };
 
-export const wildMatch = <T extends string, R = void>(
+export const wildMatch = <T extends ExpectedType, R = void>(
   m: PartialMatcher<T, R>,
 ) => (t: T) => {
-  const f = m[t];
+  const f = m[t] as ((k: T) => R) | undefined;
 
   if (f) {
     return f(t);
